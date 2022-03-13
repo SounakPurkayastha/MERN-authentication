@@ -24,7 +24,7 @@ userSchema.pre("save", async function (next) {
 
 userSchema.methods.checkPassword = async function (password) {
   try {
-    const valid = await bcrypt.compare(this.password, password);
+    const valid = await bcrypt.compare(password, this.password); // argument order matters
     return valid;
   } catch (err) {
     console.log(err);
